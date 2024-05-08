@@ -21,24 +21,16 @@ public class GroceryImplementation {
 	ArrayList<Grocery> productList = new ArrayList<>();
 	
 	public void priceCalculator(String product,int price,Grocery grocery,UserRegister user) throws SQLException {
-		//System.out.println(""+userregister);
-		//System.out.println("Available Stock :"+ stock);
 		 
 		while(true) {
 			System.out.println("Enter quantity:");
 			quantity = scan.nextInt();
 			if(validate.Numbers(quantity)) {
 				int amount=quantity*price;
-				//grocery.setProduct(product);
-				//grocery.setQuantity(quantity);
-				//grocery.setPrice(price);
 				System.out.println("amount for "+product+" is:"+amount);
-				//grocery.setAmount(amount);
-				//connect.insertProduct(grocery,user);
 				productList.add(new Grocery(quantity,amount,product,price));
 				totalAmount=totalAmount+amount;
 			    grocery.setTotalamount(totalAmount);
-			    //stock -=quantity;i++
 			    i++;
 				break;
 			}

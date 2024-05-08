@@ -18,8 +18,6 @@ public class GroceryTest {
 		int choice = 0;
 		char buy;
 		int a = 0;
-		// Add predefined username-password pairs to the ArrayList
-		//userCredentialsList.add(new UserRegister(101,"user","password1"));
 		Scanner scan=new Scanner(System.in);
 		GroceryImplementation groceryimpl=new GroceryImplementation();
 		Crud connect=new Crud();
