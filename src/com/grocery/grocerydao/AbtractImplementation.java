@@ -1,4 +1,4 @@
-package com.grocery.groceryDAO;
+package com.grocery.grocerydao;
 
 import java.util.Scanner;
 

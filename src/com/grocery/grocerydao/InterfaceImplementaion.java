@@ -1,4 +1,4 @@
-package com.grocery.groceryDAO;
+package com.grocery.grocerydao;
 
 import java.sql.SQLException;
 import java.util.InputMismatchException;
@@ -112,6 +112,7 @@ public  class InterfaceImplementaion implements GroceryInterface{
 		int id=getId();
 		while(true) {
 			System.out.println("Enter the name");
+			scan.nextLine();
 			String name=scan.nextLine();
 			if(valid.name(name)) {
 				userregister.setName(name);
@@ -143,7 +144,6 @@ public  class InterfaceImplementaion implements GroceryInterface{
 			String mobile=scan.next();
 			if(valid.mobile(mobile)) {
 				userregister.setMobile(mobile);
-				System.out.println("Registered Sucessfully");
 				break;
 			}
 			System.out.println("invalid mobile,please enter 10 numbers");

@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.grocery.groceryDAO.GroceryImplementation;
-import com.grocery.groceryDAO.InterfaceImplementaion;
+import com.grocery.grocerydao.GroceryImplementation;
+import com.grocery.grocerydao.InterfaceImplementaion;
 import com.grocery.model.Grocery;
 import com.grocery.model.UserRegister;
 import com.grocery.util.Crud;
@@ -61,10 +61,12 @@ public class GroceryTest {
 					//System.out.println(details);
 					if(ii.loginCredencial(connect,user)) {
 						do {
+							System.out.println("Enter the option:");
 							System.out.println("1.buy products");
 							System.out.println("2.get account details");
 							System.out.println("3.Update account");
 							System.out.println("4.Delete account");
+							System.out.println("5.Exit");
 							while(scan.hasNext()) {
 								try {
 									choice=scan.nextInt();
@@ -122,17 +124,21 @@ public class GroceryTest {
 							case 4:
 								ii.deleteAccount(connect);
 								break;
+							case 5:
+								break;
 						}
-						}while(choice>4);
+						}while(choice!=5);
 					}
 					break;
 				case 2:
 					if(ii.loginCredencial(connect,user)) {
 						do {
+							System.out.println("Enter the option:");
 							System.out.println("1.buy products");
 							System.out.println("2.get account details");
 							System.out.println("3.Update account");
 							System.out.println("4.Delete account");
+							System.out.println("5.Exit");
 							while(scan.hasNext()) {
 								try {
 									choice=scan.nextInt();
@@ -190,8 +196,10 @@ public class GroceryTest {
 							case 4:
 								ii.deleteAccount(connect);
 								break;
+							case 5:
+								break;
 							}
-						}while(choice>4);
+						}while(choice!=5);
 					}
 					break;
 				}
@@ -200,8 +208,12 @@ public class GroceryTest {
 			case 2:
 				int b = 0;
 				if(ii.adminLoginCredencial(connect,user)) {
+					do {
+					System.out.println("Enter the option:");
 					System.out.println("1.view all accounts");
-					System.out.println("2.To view customer purchase details");
+					System.out.println("2.Update account");
+					System.out.println("3.Delete account");
+					System.out.println("4.Exit");
 					try {
 						b=scan.nextInt();
 					}catch(InputMismatchException e) {
@@ -213,9 +225,13 @@ public class GroceryTest {
 						ii.getAccounts(connect);
 						break;
 					case 2:
-						ii.getPurchaseDetails(connect);
+						ii.updateAccount(connect, user);
+						break;
+					case 3:
+						ii.deleteAccount(connect);
 						break;
 					}
+					}while(b!=4);
 				}
 				break;
 			default:

@@ -1,4 +1,4 @@
-package com.grocery.groceryDAO;
+package com.grocery.grocerydao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

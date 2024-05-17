@@ -1,4 +1,4 @@
-package com.grocery.groceryDAO;
+package com.grocery.grocerydao;
 
 import java.util.InputMismatchException;
 
@@ -38,7 +38,7 @@ public class Validation {
 	
 	public boolean name(String name) {
 		try {
-			if(name.matches("[a-zA-Z]{2,15}")) {
+			if(name.matches("[a-zA-Z ]{2,15}")) {
 				return true;
 			}
 		}catch(InputMismatchException e) {

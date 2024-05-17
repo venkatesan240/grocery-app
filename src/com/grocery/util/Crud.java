@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.grocery.groceryDAO.InterfaceImplementaion;
+import com.grocery.grocerydao.InterfaceImplementaion;
 import com.grocery.grocerytest.GroceryTest;
 import com.grocery.model.Grocery;
 import com.grocery.model.UserRegister;
