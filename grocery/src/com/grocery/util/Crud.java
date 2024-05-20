@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.grocery.groceryDAO.InterfaceImplementaion;
+import com.grocery.grocerydao.InterfaceImplementaion;
 import com.grocery.grocerytest.GroceryTest;
 import com.grocery.model.Grocery;
 import com.grocery.model.UserRegister;
@@ -156,5 +156,25 @@ public class Crud {
 			 }
 		}
 		
+		public void insertPrice(int amount,UserRegister user) throws SQLException {
+			String insertQuery="insert into price(amount,userid)values(?,?)";
+			Connection connection = db.getConnection();
+			PreparedStatement ps=connection.prepareStatement(insertQuery);
+			ps.setInt(1,amount);
+			ps.setInt(2,user.getUserid());
+			ps.executeUpdate();
+		}
 		
+		public void getPayment() throws SQLException {
+			int temp=0;
+			String selectQuery="select priceid,amount,userid from price";
+			Statement stmt=db.getConnection().createStatement();
+			ResultSet rs=stmt.executeQuery(selectQuery);
+			System.out.println("id\tprice\tuserid");
+			while(rs.next()) {
+				System.out.println(rs.getInt(1)+"\t"+rs.getInt(2)+"\t"+rs.getInt(3));
+				temp=temp+rs.getInt(2);
+			}
+			System.out.println("total amount recived:"+temp);
+		}
 }

@@ -7,6 +7,7 @@ public class UserRegister {
 	String password;
 	String address;
 	String mobile;
+	
 	public int getUserid() {
 		return userid;
 	}
