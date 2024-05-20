@@ -15,4 +15,5 @@ public interface GroceryInterface {
 	public abstract void getAccounts(Crud connect) throws SQLException;
 	public abstract void getaccount(Crud connect,UserRegister userregister) throws SQLException;
 	public abstract void getPurchaseDetails(Crud connect) throws SQLException;
+	public abstract void paymentHistory(Crud connect) throws SQLException;
 }

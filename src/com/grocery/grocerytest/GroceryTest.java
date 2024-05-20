@@ -34,7 +34,7 @@ public class GroceryTest {
 					break;
 				}
 				catch(InputMismatchException e) {
-					System.out.println(e);
+					System.out.println("please enter a number");
 					scan.nextLine();
 				}
 			}
@@ -49,7 +49,7 @@ public class GroceryTest {
 							break;
 						}
 						catch(InputMismatchException e) {
-							System.out.println(e);
+							System.out.println("please enter a number");
 							scan.nextLine();
 						}
 					}
@@ -61,7 +61,7 @@ public class GroceryTest {
 					//System.out.println(details);
 					if(ii.loginCredencial(connect,user)) {
 						do {
-							System.out.println("Enter the option:");
+							System.out.println("\nEnter the option:");
 							System.out.println("1.buy products");
 							System.out.println("2.get account details");
 							System.out.println("3.Update account");
@@ -73,7 +73,7 @@ public class GroceryTest {
 									break;
 								}
 								catch(InputMismatchException e) {
-									System.out.println(e);
+									System.out.println("please enter a number");
 									scan.nextLine();
 								}
 							}
@@ -113,7 +113,7 @@ public class GroceryTest {
 								}while(buy == 'y');
 								groceryimpl.getBill(user,grocery);
 								groceryimpl.getDiscount(grocery);
-								groceryimpl.makePayment();
+								groceryimpl.makePayment(grocery,connect,user);
 								break;
 							case 2:
 								ii.getaccount(connect,user);
@@ -133,7 +133,7 @@ public class GroceryTest {
 				case 2:
 					if(ii.loginCredencial(connect,user)) {
 						do {
-							System.out.println("Enter the option:");
+							System.out.println("\nEnter the option:");
 							System.out.println("1.buy products");
 							System.out.println("2.get account details");
 							System.out.println("3.Update account");
@@ -145,7 +145,7 @@ public class GroceryTest {
 									break;
 								}
 								catch(InputMismatchException e) {
-									System.out.println(e);
+									System.out.println("please enter a number");
 									scan.nextLine();
 								}
 							}
@@ -185,7 +185,7 @@ public class GroceryTest {
 								}while(buy == 'y');
 								groceryimpl.getBill(user,grocery);
 								groceryimpl.getDiscount(grocery);
-								groceryimpl.makePayment();
+								groceryimpl.makePayment(grocery,connect,user);
 								break;
 							case 2:
 								ii.getaccount(connect,user);
@@ -209,15 +209,16 @@ public class GroceryTest {
 				int b = 0;
 				if(ii.adminLoginCredencial(connect,user)) {
 					do {
-					System.out.println("Enter the option:");
+					System.out.println("\nEnter the option:");
 					System.out.println("1.view all accounts");
 					System.out.println("2.Update account");
 					System.out.println("3.Delete account");
-					System.out.println("4.Exit");
+					System.out.println("4.view transaction history");
+					System.out.println("5.Exit");
 					try {
 						b=scan.nextInt();
 					}catch(InputMismatchException e) {
-						System.out.println(e);
+						System.out.println("please enter a number");
 					}
 
 					switch(b) {
@@ -230,8 +231,13 @@ public class GroceryTest {
 					case 3:
 						ii.deleteAccount(connect);
 						break;
+					case 4:
+						ii.paymentHistory(connect);
+						break;
+					case 5:
+						break;
 					}
-					}while(b!=4);
+					}while(b!=5);
 				}
 				break;
 			default:

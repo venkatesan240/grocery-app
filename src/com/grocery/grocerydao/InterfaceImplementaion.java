@@ -221,6 +221,13 @@ public  class InterfaceImplementaion implements GroceryInterface{
 		return id;
 	}
 
+	@Override
+	public void paymentHistory(Crud connect) throws SQLException {
+		// TODO Auto-generated method stub
+		System.out.println("Payment History:");
+		connect.getPayment();
+	}
+
 	
 
 

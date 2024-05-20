@@ -2,6 +2,7 @@ package com.grocery.grocerydao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import com.grocery.model.Grocery;
@@ -107,7 +108,7 @@ public class GroceryImplementation {
 		System.out.println("**********************************");
 	}
 	
-	public void makePayment() {
+	public void makePayment(Grocery grocery,Crud connect,UserRegister user) throws SQLException {
 		System.out.println("enter payment mode:");
 		System.out.println("1.online");
 		System.out.println("2.cash on delivery");
@@ -118,8 +119,27 @@ public class GroceryImplementation {
 			System.out.println("enter the online payment mode(upi/credit/debit)");
 			String payment=scan.next();
 			if(payment.equals("upi") || payment.equals("credit") || payment.equals("debit")) {
-				System.out.println("payment sucessfull...");
-				break;
+				Random rand=new Random();
+				int max=10000,min=1000;
+				int ramdom = rand.nextInt(max - min + 1) + min;
+				System.out.println("Enter payment id("+ramdom+"):");
+				int payId=scan.nextInt();
+				if(payId == ramdom) {
+					System.out.println("payable amount:"+grocery.getTotalamount());
+					System.out.println("please enter yes to confirm:");
+					String sh=scan.next();
+					if(sh.equals("yes")) {
+						connect.insertPrice(grocery.getTotalamount(),user);
+						System.out.println("payment sucessfull...");
+						break;
+					}else {
+						
+						System.out.println("payment failed..");
+					}
+				}else {
+					System.out.println("Wrong id please re-enter");
+				}
+				
 			}else {
 				System.out.println("please enter valid input");
 			}
@@ -131,7 +151,7 @@ public class GroceryImplementation {
 		}
 	}
 	public void productList() {
-		System.out.println("1.dry fruits");
+		System.out.println("\n1.dry fruits");
 		System.out.println("2.snacks");
 		System.out.println("3.cookingOil");
 		System.out.println("4.beverages");
